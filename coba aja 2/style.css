@@ -1,0 +1,160 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: radial-gradient(circle, #f0f8ff, #87cefa); /* Latar belakang langit */
+}
+
+.flower-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    animation: sway-container 6s ease-in-out infinite alternate;
+}
+
+/* Batang bunga */
+.stem {
+    width: 12px;
+    height: 350px;
+    background-color: #228b22;
+    border-radius: 6px;
+    position: relative;
+    z-index: -1;
+    animation: grow-stem 6s ease-in-out forwards;
+}
+
+/* Bunga */
+.flower {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin-bottom: 0; /* Menghapus jarak bawah */
+}
+
+/* Kelopak bunga */
+.outer-petal, .middle-petal, .inner-petal {
+    position: absolute;
+    border-radius: 50% 50% 0 0;
+    opacity: 0;
+    animation: bloom 6s ease-in-out forwards;
+}
+
+.outer-petal {
+    width: 120px;
+    height: 200px;
+    background: radial-gradient(circle at center, #ff7f50, #ff4500);
+}
+
+.middle-petal {
+    width: 90px;
+    height: 150px;
+    background: radial-gradient(circle at center, #ff6347, #ff4500);
+}
+
+.inner-petal {
+    width: 60px;
+    height: 100px;
+    background: radial-gradient(circle at center, #ffeb3b, #fbc02d);
+}
+
+/* Penempatan kelopak */
+.outer-petal.petal1 { transform: rotate(0deg) translateY(-20px); animation-delay: 0s; }
+.outer-petal.petal2 { transform: rotate(60deg) translateY(-20px); animation-delay: 0.3s; }
+.outer-petal.petal3 { transform: rotate(120deg) translateY(-20px); animation-delay: 0.6s; }
+.outer-petal.petal4 { transform: rotate(180deg) translateY(-20px); animation-delay: 0.9s; }
+.outer-petal.petal5 { transform: rotate(240deg) translateY(-20px); animation-delay: 1.2s; }
+.outer-petal.petal6 { transform: rotate(300deg) translateY(-20px); animation-delay: 1.5s; }
+
+.middle-petal.petal1 { transform: rotate(30deg) translateY(-10px); animation-delay: 1.8s; }
+.middle-petal.petal2 { transform: rotate(90deg) translateY(-10px); animation-delay: 2.1s; }
+.middle-petal.petal3 { transform: rotate(150deg) translateY(-10px); animation-delay: 2.4s; }
+.middle-petal.petal4 { transform: rotate(210deg) translateY(-10px); animation-delay: 2.7s; }
+.middle-petal.petal5 { transform: rotate(270deg) translateY(-10px); animation-delay: 3s; }
+.middle-petal.petal6 { transform: rotate(330deg) translateY(-10px); animation-delay: 3.3s; }
+
+.inner-petal.petal1 { transform: rotate(15deg) translateY(-10px); animation-delay: 3.6s; }
+.inner-petal.petal2 { transform: rotate(75deg) translateY(-10px); animation-delay: 3.9s; }
+.inner-petal.petal3 { transform: rotate(135deg) translateY(-10px); animation-delay: 4.2s; }
+.inner-petal.petal4 { transform: rotate(195deg) translateY(-10px); animation-delay: 4.5s; }
+.inner-petal.petal5 { transform: rotate(255deg) translateY(-10px); animation-delay: 4.8s; }
+.inner-petal.petal6 { transform: rotate(315deg) translateY(-10px); animation-delay: 5.1s; }
+
+/* Bagian tengah bunga */
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(circle at center, #ffd700, #ff8f00);
+    border-radius: 50%;
+    box-shadow: 0 0 30px rgba(255, 223, 0, 0.7);
+    z-index: 1;
+}
+
+/* Daun */
+.leaf {
+    position: absolute;
+    width: 90px;
+    height: 180px;
+    background: radial-gradient(circle at center, #32cd32, #006400);
+    border-radius: 50% 50% 0 0;
+    transform-origin: bottom center;
+    opacity: 1; /* Menjadikan daun terlihat */
+}
+
+.leaf1 {
+    left: -60px;
+    bottom: 0; /* Menyatu dengan batang */
+    transform: rotate(-45deg);
+}
+
+.leaf2 {
+    right: -60px;
+    bottom: 0; /* Menyatu dengan batang */
+    transform: rotate(45deg);
+}
+
+/* Animasi bunga mekar */
+@keyframes bloom {
+    0% {
+        transform: scale(0.1);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Animasi batang tumbuh */
+@keyframes grow-stem {
+    0% {
+        height: 0;
+    }
+    100% {
+        height: 350px;
+    }
+}
+
+/* Animasi goyangan kontainer bunga */
+@keyframes sway-container {
+    0% {
+        transform: rotate(1deg);
+    }
+    100% {
+        transform: rotate(-1deg);
+    }
+}
